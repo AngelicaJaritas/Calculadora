@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<META CHARSET= UTF-8>
+    <meta name= "viewport" http-equiv="X-UA-Compatible" content="width=device-width, initial-scale=1, maximum-scale=1">
+       <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+           <script src="Bootstrap/js"></script>
+           <link rel="stylesheet" href="css/bootstrap.css">
+           <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/Estilos_angelica3.css">
+	<div>Calculadora Angélica Herrera Jaritas</div>
+</head>
+<body>
+	<div class="container">
+    <div class="row">
+       <div class="col-4 resultado"></div>
+    </div>
+	<div class="row">
+		<button class="col-1 border limpiar ac">C</button>
+		<button class="col-1 border boton3 mas-"> +/-</button>
+		<button class="col-1 border boton3 por">%</button>
+		<button class="col-1 border boton3 div">÷</button>
+	</div>
+	<div class="row">
+		<button class="col-1 border numeros n7">7</button>
+		<button class="col-1 border numeros n8">8</button>
+		<button class="col-1 border numeros n9">9</button>
+		<button class="col-1 border boton3 mult">x</button>
+	</div>
+	<div class="row">
+		<button class="col-1 border numeros n6">6</button>
+		<button class="col-1 border numeros n5">5</button>
+		<button class="col-1 border numeros n4">4</button>
+	    <button class="col-1 border boton3 res">-</button>
+	</div>
+	<div class="row">
+		<button class="col-1 border numeros n3">3</button>
+		<button class="col-1 border numeros n2">2</button>
+		<button class="col-1 border numeros n1">1</button>
+		<button class="col-1 border boton3 suma"> +</button>
+	</div>
+	<div class="row">
+		<button class="col-2 border numeros n0">0</button>
+	
+		<button class="col-1 border numeros punto">.</button>
+		<button class="col-1 border boton3 igual">=</button>
+	</div>
+	</div>
+	<script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="Bootstrap/js/bootstrap.js">
+
+</body>
+</html>
+<script type="text/javascript">
+var Num1;
+var Num2;
+var opera;
+var menos = 0;
+	$(document).ready(function(){
+		alert("Bienvenido :)");
+
+function clear(){
+ $(".resultado").html("");
+}
+function reset(){
+ $(".resultado").html("");
+ Num1 = 0;
+ Num2 = 0;
+ opera = "";
+}
+		$(".n0").click(function(){
+			$(".resultado").append("0");
+		})
+		$(".n1").click(function(){
+			$(".resultado").append("1");
+		})
+		$(".n2").click(function(){
+			$(".resultado").append("2");
+		})
+		$(".n3").click(function(){
+			$(".resultado").append("3");
+		})
+		$(".n4").click(function(){
+			$(".resultado").append("4");
+		})
+		$(".n5").click(function(){
+			$(".resultado").append("5");
+		})
+		$(".n6").click(function(){
+			$(".resultado").append("6");
+		})
+		$(".n7").click(function(){
+			$(".resultado").append("7");
+		})
+		$(".n8").click(function(){
+			$(".resultado").append("8");
+		})
+		$(".n9").click(function(){
+			$(".resultado").append("9");
+		})
+		$(".ac").click(function(){
+			$(".resultado").html(reset);
+		})
+
+		$(".mas-").click(function(){
+			if(menos == 0){
+			$(".resultado").prepend("-");
+            menos = 1;
+		}else{
+			$(".resultado").empty("-");
+			menos = 0;
+		}
+		})
+		$(".por").click(function(){
+			$(".resultado").html("");
+		})
+
+		$(".div").click(function(){
+			Num1 = $(".resultado").html();
+			opera = "division";
+			$(".result").html(clear);
+		})
+		$(".mult").click(function(){
+			Num1 = $(".resultado").html();
+			opera = "mult";
+			$(".resultado").html(clear);
+		})
+		$(".suma").click(function(){
+			Num1 = $(".resultado").html();
+			opera = "suma";
+			$(".resultado").html(clear);
+		})
+		$(".res").click(function(){
+			Num1 = $(".resultado").html();
+			opera = "resta";
+			$(".resultado").html(clear);
+		})
+		$(".punto").click(function(){
+			$(".resultado").append(".");
+		})
+		$(".igual").click(function(){
+			Num2 = $(".resultado").html();
+			resolver();
+		})
+    function resolver(){
+	var res = 0;
+		switch(opera){
+			case "suma":
+			res = Number(Num1) + Number(Num2);
+			break;
+			case "resta":
+			res = Number(Num1) - Number(Num2);
+			break;
+			case "division":
+			res = Number(Num1) / Number(Num2);
+			break;
+			case "mult":
+			res = Number(Num1) * Number(Num2); 
+			break;
+		}
+		reset();
+		$(".resultado").html(res);
+}
+
+	})
+</script>
